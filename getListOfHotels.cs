@@ -57,17 +57,3 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
         public int Price { get; set; }
         public bool Availability { get; set; }
     }
-
-
-
-
-
-
-
-
-
-{
-  "hotel_name": "Homewood",
-   "price" : 160,
-    "availability" : 1
-}
