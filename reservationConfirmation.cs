@@ -47,30 +47,12 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
         
     }
 
-
-    string responseMessage = "ok bye";
-            return new OkObjectResult(responseMessage);
+    
+    ConfirmData responseMessage=new ConfirmData();
+    responseMessage.confirmation_number=""+n;
+    return new OkObjectResult(responseMessage);
 }
-public class PostData
+public class ConfirmData
 {
-    public string name { get;set; }    
+    public string confirmation_number { get;set; }    
 }
-
-
-
-{
-  "hotel_name": "Marriot",
-   "checkin": "01-08-2021",
-   "checkout": "12-08-2021",
-  "guests_list": [
-           { "guest_name" : "Mit",
-             "gender": "Male"
-           },
-           { "guest_name" : "Neel",
-             "gender": "Male"
-           }
-       ]
-}
-
-
-
