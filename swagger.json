@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Hotel Booking Application",
+    "description": "This api is useful to get Hotel details and Store booking details using GET and POST respectively.",
+    "version": "1.0.1"
+  },
+  "host": "projectmcda5550.azurewebsites.net",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Hotel Booking",
+      "description": "Everything about Hotels"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/getListOfHotels": {
+      "get": {
+        "tags": [
+          "Hotel Booking"
+        ],
+        "summary": "Returns Hotel Information",
+        "description": "Returns a Hotels name, price and availability",
+        "operationId": "getListOfHotels",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/reservationConfirmation": {
+      "post": {
+        "tags": [
+          "Hotel Booking"
+        ],
+        "summary": "Returns Confirmation Number",
+        "description": "Store guest and Hotel details and return Confirmation Number",
+        "operationId": "reservationConfirmation",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The user to create.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "Reservation"
+              ],
+              "properties": {
+                "hotel_name": {
+                  "type": "string"
+                },
+                "checkin": {
+                  "type": "string"
+                },
+                "checkout": {
+                  "type": "string"
+                },
+                "guests_list": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guest_name": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "code"
+    }
+  }
+}
